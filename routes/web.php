@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// Route::view('/dashboard', 'dashboard');
+// Route::view('/', 'pages.auth.login');
 
+Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', [App\Http\Controllers\DashboardAdminController::class, 'index']);
+    Route::get('/member', [App\Http\Controllers\MemberController::class, 'index']);
+});
 
 Auth::routes();
 

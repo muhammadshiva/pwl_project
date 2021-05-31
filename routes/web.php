@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IsUser;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,4 @@ Route::group(['middleware' => 'auth'], function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('is_user');

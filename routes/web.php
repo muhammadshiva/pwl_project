@@ -24,11 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardAdminController::class, 'index']);
-    Route::get('/member', [App\Http\Controllers\MemberController::class, 'index']);
-});
 
 Auth::routes();
 
-Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('is_user');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

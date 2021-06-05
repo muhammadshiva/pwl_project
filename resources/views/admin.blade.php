@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <h2>ini adalah halaman dashboard</h2>
+    <h2>ini adalah halaman admin</h2>
 @endsection

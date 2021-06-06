@@ -191,14 +191,40 @@
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+        <div class="image mt-2">
           <img src="{{asset('assets')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-
+          {{-- <a href="#" class="d-block">{{ Auth::user()->name }}</a> --}}
+          <a href="#" class="mb-0">{{ Auth::user()->name }}</a> <br />
+          <a href="#"><i class="fa fa-circle text-success"></i>
+            @if (auth()->user()->level==1)
+                    Admin
+            @elseif (auth()->user()->level==2)
+                    Guru
+            @elseif (auth()->user()->level==3)
+                    Siswa
+            @endif
+          </a>
         </div>
       </div>
+      {{-- <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{{asset('assets')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ Auth::user()->name }}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i>
+            @if (auth()->user()->level==1)
+                    Admin
+            @elseif (auth()->user()->level==2)
+                    Guru
+            @elseif (auth()->user()->level==3)
+                    Siswa
+            @endif
+          </a>
+        </div>
+      </div> --}}
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">

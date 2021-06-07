@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::prefix('admin')->group(function () {
+        Route::get('/master/user', [UserController::class, 'index'])->name('registerUser');
+        Route::resource('user', UserController::class);
+        // Route::get('/master/absensi', [AbsensiController::class, 'index']);
+    });
 });
 Route::group(['middleware' => 'guru'], function () {
     Route::get('/guru', [GuruController::class, 'index']);

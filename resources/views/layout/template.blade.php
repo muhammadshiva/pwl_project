@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="{{asset('assets')}}/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets')}}/dist/css/adminlte.min.css">
+   <!-- Toastr -->
+   <link rel="stylesheet" href="{{asset('assets')}}/plugins/toastr/toastr.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -272,9 +274,9 @@
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.1.0
+      <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2021 <a href="#">NAVA.Corporation</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2021 <a href="#">NAVA Corporation</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -293,5 +295,25 @@
 <script src="{{asset('assets')}}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets')}}/dist/js/demo.js"></script>
+<!-- Toastr -->
+<script src="{{asset('assets')}}/plugins/toastr/toastr.min.js"></script>
+<script>
+    $(function() {
+        var Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+
+        $('.swalDefaultSuccess').click(function() {
+          Toast.fire({
+            icon: 'success',
+            title: 'User berhasil dibuat.'
+          })
+        });
+    })
+</script>
 </body>
 </html>
+

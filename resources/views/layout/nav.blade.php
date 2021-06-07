@@ -10,7 +10,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
               <p>
-                Master Data
+                Data User
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -18,13 +18,13 @@
               <li class="nav-item">
                 <a href="admin/master/user" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data User</p>
+                  <p>Create User</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="admin/masterAdmin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Admin</p>
+                  <p>Detail User</p>
                 </a>
               </li>
               <li class="nav-item">

@@ -3,11 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
-<<<<<<< HEAD
 use App\Http\Controllers\MasterAdminController;
-=======
 use App\Http\Controllers\MapelController;
->>>>>>> 12ba8d776164436fe214e2253b7f694a9b6cc5d0
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;

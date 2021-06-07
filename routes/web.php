@@ -37,12 +37,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
     Route::prefix('admin')->group(function () {
-        Route::get('/master/user', [UserController::class, 'index'])->name('registerUser');
+        Route::get('/', [AdminController::class, 'index'])->name('admin');
         Route::resource('user', UserController::class);
         Route::resource('mapel', MapelController::class);
-        // Route::get('/master/absensi', [AbsensiController::class, 'index']);
     });
 });
 Route::group(['middleware' => 'guru'], function () {

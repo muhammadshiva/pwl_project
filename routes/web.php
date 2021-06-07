@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::prefix('admin')->group(function () {
         Route::get('/master/user', [UserController::class, 'index'])->name('registerUser');
         Route::resource('user', UserController::class);
+        Route::resource('mapel', MapelController::class);
         // Route::get('/master/absensi', [AbsensiController::class, 'index']);
     });
 });

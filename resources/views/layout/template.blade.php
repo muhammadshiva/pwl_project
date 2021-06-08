@@ -210,36 +210,6 @@
           </a>
         </div>
       </div>
-      {{-- <div class="user-panel">
-        <div class="pull-left image">
-          <img src="{{asset('assets')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>{{ Auth::user()->name }}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i>
-            @if (auth()->user()->level==1)
-                    Admin
-            @elseif (auth()->user()->level==2)
-                    Guru
-            @elseif (auth()->user()->level==3)
-                    Siswa
-            @endif
-          </a>
-        </div>
-      </div> --}}
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         @include('layout.nav')

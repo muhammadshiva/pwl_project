@@ -62,6 +62,9 @@ class MasterAdminController extends Controller
      */
     public function show($id)
     {
+        $user = User::find($id);
+        return view('pages.admin.master.userShow', compact('user'));
+        // return dd($user);
     }
 
     /**
@@ -72,7 +75,8 @@ class MasterAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('pages.admin.master.userEdit', compact('user'));
     }
 
     /**
@@ -84,7 +88,14 @@ class MasterAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+        User::find($id)->update($request->all());
+
+        return redirect()->route('admin')
+            ->with('success', 'Data Berhasil Diupdate');
     }
 
     /**
@@ -95,6 +106,8 @@ class MasterAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('masterAdmin.index')
+            ->with('success', 'User Berhasil Dihapus');
     }
 }

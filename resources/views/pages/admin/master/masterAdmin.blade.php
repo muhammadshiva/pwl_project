@@ -7,7 +7,7 @@
       <!-- SidebarSearch Form -->
 
         <form action="{{ route('masterAdmin.index')}}" method="get">
-          <input class="form-control" type="text" name='keywords' placeholder="Search by level" aria-label="Search">
+          <input class="form-control" type="text" name='keywords' placeholder="Search by name" aria-label="Search">
         </form>
 
     </div>
@@ -48,22 +48,26 @@
                     @endif
                   </td>
                   <td class="project-actions">
-                      <a class="btn btn-primary btn-sm" href="#">
-                          <i class="fas fa-folder">
-                          </i>
-                          Lihat
-                      </a>
-                      <a class="btn btn-info btn-sm" href="#">
-                          <i class="fas fa-pencil-alt">
-                          </i>
-                          Edit
-                      </a>
-                      <a class="btn btn-danger btn-sm" href="#">
-                          <i class="fas fa-trash">
-                          </i>
-                          Hapus
-                      </a>
-                  </td>
+                    <form action="{{ route('masterAdmin.destroy', $User->id) }}" method="POST">
+                    <a class="btn btn-primary btn-sm" href="{{route('masterAdmin.show', $User->id)}}" >
+                        <i class="fas fa-folder">
+                        </i>
+                        Lihat
+                    </a>
+                    <a class="btn btn-info btn-sm" href="{{route('masterAdmin.edit', $User->id)}}">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Edit
+                    </a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash">
+                        </i>
+                        Hapus
+                    </button>
+                  </form>
+                </td>
               </tr>
               @endforeach
           </tbody>

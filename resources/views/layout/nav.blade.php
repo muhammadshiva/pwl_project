@@ -28,18 +28,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Guru</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Siswa</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="/admin/mapel" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Mapel</p>
@@ -82,6 +70,4 @@
             <a href="/siswa" class="nav-link {{ request()->is('siswa') ? 'active' : '' }}"><i class="nav-icon fas fa-user-graduate"></i><p>Siswa</p></a>
         </li>
     @endif
-
-
 </ul>

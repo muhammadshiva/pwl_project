@@ -40,8 +40,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'admin'], function () {
 
     Route::prefix('admin')->group(function () {
-        Route::get('/', [AdminController::class, 'index'])->name('admin');
         Route::resource('masterAdmin', MasterAdminController::class);
+        Route::get('/', [AdminController::class, 'index'])->name('admin');
         Route::resource('user', UserController::class);
         Route::resource('mapel', MapelController::class);
     });

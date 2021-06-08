@@ -92,7 +92,7 @@ class MapelController extends Controller
             'name' => 'required',
             'image' => 'required',
         ]);
-        $mapel = Mapel::find($id)->first();
+        $mapel = Mapel::find($id);
         if ($mapel->image && file_exists('app/public/' . $mapel->image)) {
             \Storage::delete('public/' . $mapel->image);
         }

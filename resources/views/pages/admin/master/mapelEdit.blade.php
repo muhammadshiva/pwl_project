@@ -2,7 +2,7 @@
 @extends('layout.template')
 
 @section('title')
-    <h1>Mata Pelajaran Edit</h1>
+    <h1>Edit Mata Pelajaran</h1>
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
     <div class="row justify-content-center align-items-center">
     <div class="card" style="width: 24rem;">
         <div class="card-header">
-            Edit Mahasiswa
+            Edit Mata Pelajaran {{$mapel->name}}
         </div>
         <div class="card-body">
         @if ($errors->any())

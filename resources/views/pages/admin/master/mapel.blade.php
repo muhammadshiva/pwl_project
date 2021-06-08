@@ -1,7 +1,7 @@
 @extends('layout.template')
 
 @section('title')
-    <h1>Mapel</h1>
+    <h1>Mata Pelajaran</h1>
 @endsection
 
 @section('content')

@@ -18,8 +18,8 @@ class Tugas extends Model
         'id_mapel',
     ];
 
-    public function tugas()
+    public function mapel()
     {
-        return $this->belongsTo(Mapel::class);
+        return $this->belongsTo(Mapel::class, 'id_mapel');
     }
 }

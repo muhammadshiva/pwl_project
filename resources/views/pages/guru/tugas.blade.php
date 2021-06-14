@@ -9,7 +9,7 @@
       <div class="card">
         <div class="card-header">
             <div class="row ">
-                {{-- <div class="col-sm-auto"><a class="btn btn-primary" href="{{ route('mapel.create') }}"> Input Tugas</a></div> --}}
+                <div class="col-sm-auto"><a class="btn btn-primary" href="{{ route('tambahTugas', $id) }}"> Input Tugas</a></div>
             </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success mt-2">

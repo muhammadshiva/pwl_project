@@ -28,7 +28,8 @@ class GuruController extends Controller
      */
     public function create()
     {
-        //
+        // $tugas = Tugas::find($id);
+        // return view('pages.guru.tugas-create', compact('tugas'));
     }
 
     /**
@@ -39,7 +40,29 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'deskripsi' => 'required',
+            'tanggal' => 'required',
+            'duedate' => 'required',
+            'file' => 'required',
+            'id_mapel' => 'required',
+        ]);
+
+        $file_tugas = "";
+        if ($request->file('file')) {
+            $file_tugas = $request->file('file')->store('files', 'public');
+        }
+
+        $tugas = new Tugas;
+        $tugas->deskripsi = $request->get('deskripsi');
+        $tugas->tanggal = $request->get('tanggal');
+        $tugas->duedate = $request->get('duedate');
+        $tugas->file = $file_tugas;
+        $tugas->id_mapel = $request->get('id');
+        $tugas->save();
+
+        return redirect()->route('guru.index')
+            ->with('success', 'Tugas berhasil dibuat');
     }
 
     /**
@@ -53,7 +76,7 @@ class GuruController extends Controller
         $tugas = Tugas::where('id_mapel', $id)
             ->orderBy('id_mapel', 'asc')
             ->get();
-        return view('pages.guru.tugas', compact('tugas'));
+        return view('pages.guru.tugas', compact('tugas', 'id'));
         // return dd($tugas);
     }
 
@@ -89,5 +112,11 @@ class GuruController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function tambahTugas($id)
+    {
+        $tugas = Tugas::find($id);
+        return view('pages.guru.tugas-create', compact('tugas'));
     }
 }

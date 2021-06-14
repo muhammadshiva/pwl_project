@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tugas;
-use App\Models\Mapel;
 use Illuminate\Http\Request;
 
-class SiswaController extends Controller
+class TugasSiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $tugas = Mapel::orderBy('id', 'asc')->paginate(5);
-        return view('pages.siswa.siswa', compact('tugas'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        //
     }
 
     /**
@@ -49,10 +46,9 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        $tugas = Tugas::where('id_mapel', $id)
-            ->orderBy('id_mapel', 'asc')
-            ->get();
-        return view('pages.siswa.tugasShow', compact('tugas'));
+        // $tugas = Tugas::find($id);
+        $tugas = Tugas::find($id);
+        return view('pages.siswa.tugasShowId', compact('tugas'));
     }
 
     /**

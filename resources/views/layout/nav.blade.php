@@ -37,10 +37,10 @@
         </li>
     @elseif (auth()->user()->level==2)
         <li class="nav-item">
-            <a href="/guru" class="nav-link {{ request()->is('guru') ? 'active' : '' }}"><i class="nav-icon fas fa-chalkboard-teacher"></i><p>Guru</p></a>
+            <a href="/guru" class="nav-link {{ request()->is('guru') ? 'active' : '' }}"><i class="nav-icon fas fa-chalkboard-teacher"></i><p>Buat Tugas</p></a>
         </li>
         <li class="nav-item">
-            <a href="/siswa" class="nav-link {{ request()->is('siswa') ? 'active' : '' }}"><i class="nav-icon fas fa-user-graduate"></i><p>Siswa</p></a>
+            <a href="#" class="nav-link {{ request()->is('guru') ? 'active' : '' }}"><i class="nav-icon fas fa-chalkboard-teacher"></i><p>Lihat Hasil Tugas</p></a>
         </li>
     @elseif (auth()->user()->level==3)
         <li class="nav-item">

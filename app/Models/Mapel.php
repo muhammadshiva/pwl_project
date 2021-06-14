@@ -13,4 +13,9 @@ class Mapel extends Model
         'name',
         'image'
     ];
+
+    public function mapel()
+    {
+        return $this->hasMany(Tugas::class);
+    }
 }

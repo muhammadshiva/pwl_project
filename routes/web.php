@@ -48,6 +48,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 Route::group(['middleware' => 'guru'], function () {
     Route::get('/guru', [GuruController::class, 'index']);
+    Route::resource('guru', GuruController::class);
 });
 Route::group(['middleware' => 'siswa'], function () {
     Route::get('/siswa', [SiswaController::class, 'index']);

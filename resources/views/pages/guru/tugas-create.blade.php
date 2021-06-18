@@ -26,8 +26,8 @@
 
         <div class="form-group">
             <label for="id_mapel">Mapel</label>
-            <input disabled type="text" value="{{$tugas->mapel->name}}" name="id_mapel" class="form-control" id="id_mapel" aria-describedby="id_mapel" >
-            <input disabled type="hidden" value="{{$tugas->id_mapel}}" name="id_mapel" class="form-control" id="id_mapel" aria-describedby="id_mapel" >
+            <input disabled type="text" value="{{$mapel->name}}" name="name" class="form-control" id="name" aria-describedby="name" >
+            <input type="hidden" value="{{$mapel->id}}" name="id_mapel" class="form-control" id="id_mapel" aria-describedby="id_mapel" >
         </div>
 
         <div class="form-group">

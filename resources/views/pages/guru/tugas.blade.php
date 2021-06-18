@@ -9,7 +9,7 @@
       <div class="card">
         <div class="card-header">
             <div class="row ">
-                <div class="col-sm-auto"><a class="btn btn-primary" href="{{ route('tambahTugas', $id) }}"> Input Tugas</a></div>
+            <div class="col-sm-auto"><a class="btn btn-primary" href="{{ route('tambahTugas', $id) }}">Input Tugas</a></div>
             </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success mt-2">
@@ -33,6 +33,9 @@
                       <th>
                           File
                     </th>
+                    <th>
+                          Aksi
+                    </th>
                   </tr>
               </thead>
               <tbody>
@@ -51,14 +54,14 @@
                     <td>
                             {{$tgs->file}}
                     </td>
-                    {{-- <td class="project-actions">
-                        <form action="{{ route('mapel.destroy', $mapel->id) }}" method="POST">
-                        <a class="btn btn-primary btn-sm" href="{{route('mapel.show', $mapel->id)}}" >
+                    <td class="project-actions">
+                        <form action="{{ route('guru.destroy', $tgs->id) }}" method="POST">
+                        <a class="btn btn-primary btn-sm" href="{{route('detailTugas', $tgs->id)}}" >
                             <i class="fas fa-folder">
                             </i>
                             Lihat
                         </a>
-                        <a class="btn btn-info btn-sm" href="{{route('mapel.edit', $mapel->id)}}">
+                        <a class="btn btn-info btn-sm" href="{{route('guru.edit', $tgs->id)}}">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit
@@ -71,7 +74,7 @@
                             Hapus
                         </button>
                       </form>
-                    </td> --}}
+                    </td>
                 </tr>
                       @endforeach
 

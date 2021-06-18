@@ -48,6 +48,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 Route::group(['middleware' => 'guru'], function () {
     Route::get('/tambahTugas/{id}', [GuruController::class, 'tambahTugas'])->name('tambahTugas');
+    Route::get('/detailTugas/{id}', [GuruController::class, 'detailTugas'])->name('detailTugas');
     // Route::get('/guru', [GuruController::class, 'index']);
     Route::resource('guru', GuruController::class);
 });

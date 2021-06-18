@@ -84,7 +84,7 @@ class TugasSiswaController extends Controller
         $tugas->file_result = $file_result_name;
         $tugas->save();
 
-        return redirect()->route('tugas-siswas.index')
+        return redirect()->back()
             ->with('success', 'Tugas anda berhasil di upload');
     }
 

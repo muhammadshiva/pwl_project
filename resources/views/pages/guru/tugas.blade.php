@@ -21,21 +21,10 @@
           <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th>
-                          Deskripsi
-                      </th>
-                      <th>
-                          Tanggal
-                      </th>
-                      <th>
-                          Waktu Pengumpulan
-                      </th>
-                      <th>
-                          File
-                    </th>
-                    <th>
-                          Aksi
-                    </th>
+                    <th>Judul</th>
+                    <th>Last Modified</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
                   </tr>
               </thead>
               <tbody>
@@ -51,15 +40,12 @@
                     <td>
                             {{$tgs->duedate}}
                     </td>
-                    <td>
-                            {{$tgs->file}}
-                    </td>
                     <td class="project-actions">
                         <form action="{{ route('guru.destroy', $tgs->id) }}" method="POST">
                         <a class="btn btn-primary btn-sm" href="{{route('detailTugas', $tgs->id)}}" >
-                            <i class="fas fa-folder">
+                            <i class="fas fa-eye">
                             </i>
-                            Lihat
+                            See
                         </a>
                         <a class="btn btn-info btn-sm" href="{{route('guru.edit', $tgs->id)}}">
                             <i class="fas fa-pencil-alt">
@@ -71,7 +57,7 @@
                         <button type="submit" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash">
                             </i>
-                            Hapus
+                            Delete
                         </button>
                       </form>
                     </td>

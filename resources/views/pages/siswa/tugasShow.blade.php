@@ -1,14 +1,12 @@
 @extends('layout.template')
 
-@section('title')
-    <h1>Siswa</h1>
-@endsection
-
 @section('content')
     <div class="card">
         <div class="card-header">
-            <div class="row ">
-                {{-- <div class="col-sm-auto"><a class="btn btn-primary" href="{{ route('tugas.create') }}">Input Mata Pelajran Baru</a></div> --}}
+            <div class="d-flex align-content-center justify-content-between">
+                <h5 class="font-weight-bold mt-1">
+                    Recent Tasks - {{$tugasMapel->name}}
+                </h5>
             </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success mt-2">
@@ -20,10 +18,11 @@
             <table class="table table-striped projects">
                 <thead>
                     <tr>
-                        <th>Deskripsi</th>
-                        <th>Tanggal</th>
-                        <th>Waktu Pengumpulan</th>
-                        <th>File</th>
+                        <th>Judul</th>
+                        <th>Last Modified</th>
+                        <th>Due Date</th>
+                        <th>Submission Status</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,20 +44,24 @@
                             </a>
                         </td>
                         <td>
-                            <a>
-                                {{$tgs->file}}
-                            </a>
+                            @if ($tgs->file_result == null)
+                                <span class="badge badge-warning text-bold text-white" style="padding: 10px;">No attempt</span>
+                            @else
+                                <span class="badge badge-primary font-weight-bold" style="padding: 10px;">Submitted for grading</span>
+                            @endif
+
+
+                            {{-- <button class="btn btn-primary">Belum</button> --}}
                         </td>
-                        <td class="project-actions">
+                        <td class="project-actions flex-wrap">
                             <a class="btn btn-primary btn-sm" href="{{route('tugas-siswa.show', $tgs->id)}}" >
-                                <i class="fas fa-folder">
+                                <i class="fas fa-eye">
                                 </i>
-                                Lihat
+                                See
                             </a>
-                            <a class="btn btn-info btn-sm" href="{{route('mapel.edit', $tgs->id)}}">
-                                <i class="fas fa-pencil-alt">
-                                </i>
-                                Kirim Tugas
+                            <a class="btn btn-info btn-sm"  href="{{route('tugas-siswa.edit', $tgs->id)}}" >
+                                <i class="fas fa-book"></i>
+                                Send Assigment
                             </a>
                         </td>
                     </tr>

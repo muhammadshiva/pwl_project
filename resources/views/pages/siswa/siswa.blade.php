@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success mt-2">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <div class="d-flex flex-wrap">
         @foreach ($tugas as $tgs)
         <div class="card mr-3" style="width: 15.4rem;">

@@ -8,17 +8,19 @@
     <h1>Tugas Mata Pelajaran - {{$tugas->mapel->name}}</h1>
     <table class="table bg-white">
         <thead>
-          <tr>
+            <tr>
             <th scope="col">Deadline</th>
             <th scope="col">Deskripsi</th>
-          </tr>
+            </tr>
         </thead>
         <tbody>
-          <tr>
+            <tr>
             <td>{{$tugas->duedate}}</td>
             <td scope="row">{{$tugas->deskripsi}}</td>
-          </tr>
+            </tr>
         </tbody>
-      </table>
-
+    </table>
+    <div style="position: relative; overflow: hidden; width: 100%; ">
+        <iframe src="{{asset('storage/'.$tugas->file)}}" width="100%" height="900"></iframe>
+    </div>
 @endsection

@@ -52,7 +52,8 @@ class SiswaController extends Controller
         $tugas = Tugas::where('id_mapel', $id)
             ->orderBy('id_mapel', 'asc')
             ->get();
-        return view('pages.siswa.tugasShow', compact('tugas'));
+        $tugasMapel = Mapel::find($id);
+        return view('pages.siswa.tugasShow', compact('tugas', 'tugasMapel'));
     }
 
     /**

@@ -59,7 +59,8 @@ class TugasSiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tugas = Tugas::find($id);
+        return view('pages.siswa.tugasCreate', compact('tugas'));
     }
 
     /**
@@ -71,7 +72,20 @@ class TugasSiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'file_result' => 'required',
+        ]);
+        $tugas = Tugas::find($id);
+        if ($tugas->file_result && file_exists('app/public/' . $tugas->file_result)) {
+            \Storage::delete('public/' . $tugas->file_result);
+        }
+
+        $file_result_name = $request->file('file_result')->store('fileSiswa', 'public');
+        $tugas->file_result = $file_result_name;
+        $tugas->save();
+
+        return redirect()->route('tugas-siswas.index')
+            ->with('success', 'Tugas anda berhasil di upload');
     }
 
     /**

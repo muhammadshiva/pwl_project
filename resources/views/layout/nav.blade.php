@@ -44,7 +44,7 @@
         </li>
     @elseif (auth()->user()->level==3)
         <li class="nav-item">
-            <a href="/tugas-siswas" class="nav-link {{ request()->is('guru') ? 'active' : '' }}"><i class="nav-icon fas fa-chalkboard-teacher"></i><p>Tugas Terbaru</p></a>
+            <a href="/tugas-siswas" class="nav-link {{ request()->is('tugas-siswas') ? 'active' : '' }}"><i class="nav-icon fas fa-chalkboard-teacher"></i><p>Tugas Terbaru</p></a>
         </li>
     @endif
 </ul>

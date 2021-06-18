@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mapel;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
+use League\CommonMark\Block\Element\Document;
 
 class GuruController extends Controller
 {
@@ -45,20 +46,25 @@ class GuruController extends Controller
             'tanggal' => 'required',
             'duedate' => 'required',
             'file' => 'required',
-            'id_mapel' => 'required',
         ]);
 
-        $file_tugas = "";
+        $filename = "";
         if ($request->file('file')) {
-            $file_tugas = $request->file('file')->store('files', 'public');
+            // $file = $request->file('file');
+            // $filename = time() . '.' . $file->getClientOriginalExtension();
+            // $request->file->move('storage/' . $filename);
+
+            // $tugas->file = $filename;
+
+            $filename = $request->file('file')->store('files', 'public');
         }
 
         $tugas = new Tugas;
         $tugas->deskripsi = $request->get('deskripsi');
         $tugas->tanggal = $request->get('tanggal');
         $tugas->duedate = $request->get('duedate');
-        $tugas->file = $file_tugas;
-        $tugas->id_mapel = $request->get('id');
+        $tugas->file = $filename;
+        $tugas->id_mapel = $request->id_mapel;
         $tugas->save();
 
         return redirect()->route('guru.index')
@@ -79,6 +85,19 @@ class GuruController extends Controller
         return view('pages.guru.tugas', compact('tugas', 'id'));
         // return dd($tugas);
     }
+
+
+    public function detailTugas($id)
+    {
+        $tugas = Tugas::find($id);
+        return view('pages.guru.tugas-show', compact('tugas'));
+        // return dd($tugas);
+    }
+
+    // public function showTugas($id)
+    // {
+
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -111,12 +130,14 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tugas::find($id)->delete();
+        return redirect()->route('guru.index')
+            ->with('success', 'Tugas berhasil dihapus');
     }
 
     public function tambahTugas($id)
     {
-        $tugas = Tugas::find($id);
-        return view('pages.guru.tugas-create', compact('tugas'));
+        $mapel = Mapel::find($id);
+        return view('pages.guru.tugas-create', compact('mapel'));
     }
 }

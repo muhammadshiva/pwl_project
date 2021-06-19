@@ -40,7 +40,7 @@
             <a href="/guru" class="nav-link {{ request()->is('guru') ? 'active' : '' }}"><i class="nav-icon fas fa-chalkboard-teacher"></i><p>Buat Tugas</p></a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('guru') ? 'active' : '' }}"><i class="nav-icon fas fa-chalkboard-teacher"></i><p>Lihat Hasil Tugas</p></a>
+            <a href="/hasil" class="nav-link {{ request()->is('hasil') ? 'active' : '' }}"><i class="nav-icon fas fa-chalkboard-teacher"></i><p>Lihat Hasil Tugas</p></a>
         </li>
     @elseif (auth()->user()->level==3)
         <li class="nav-item">

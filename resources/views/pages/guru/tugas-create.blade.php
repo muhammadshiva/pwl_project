@@ -6,6 +6,16 @@
 @endsection
 
 @section('content')
+<div style="width: 100%;">
+    @if ($message = Session::get('success'))
+        <div class="alert alert-default-success bg-success" role="alert">
+            <strong class="text-white">{{ $message }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    @endif
+</div>
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
     <div class="card" style="width: 24rem;">

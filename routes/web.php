@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\HasilController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterAdminController;
 use App\Http\Controllers\MapelController;
@@ -50,7 +51,8 @@ Route::group(['middleware' => 'admin'], function () {
 Route::group(['middleware' => 'guru'], function () {
     Route::get('/tambahTugas/{id}', [GuruController::class, 'tambahTugas'])->name('tambahTugas');
     Route::get('/detailTugas/{id}', [GuruController::class, 'detailTugas'])->name('detailTugas');
-    // Route::get('/guru', [GuruController::class, 'index']);
+    Route::get('/hasilTugasShow/{id}', [HasilController::class, 'hasilTugasShow'])->name('hasilTugasShow');
+    Route::resource('hasil', HasilController::class);
     Route::resource('guru', GuruController::class);
 });
 Route::group(['middleware' => 'siswa'], function () {

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mapel;
+use App\Models\Submitions;
 use App\Models\Tugas;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TugasSiswaController extends Controller
@@ -27,6 +30,13 @@ class TugasSiswaController extends Controller
         //
     }
 
+    public function createAssigment($id)
+    {
+        $tugas = Tugas::find($id);
+        $mapel = Mapel::find($id);
+        return view('pages.siswa.tugasCreate', compact('tugas', 'mapel'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +45,27 @@ class TugasSiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name_student' => 'required',
+            'title' => 'required',
+            'file' => 'required|mimes:jpeg,png,jpg,gif,svg,pdf,doc,docx|max:2048',
+        ]);
+
+        $file_name = "";
+        if ($request->file('file')) {
+            $file_name = $request->file('file')->store('fileSiswa', 'public');
+        }
+
+        $submitions = new Submitions;
+        $submitions->name_student = $request->get('name_student');
+        $submitions->title = $request->get('title');
+        $submitions->comment = $request->get('comment');
+        $submitions->file = $file_name;
+        $submitions->id_assigment = $request->get('id_assigment');
+        $submitions->save();
+
+        return redirect()->back()
+            ->with('success', 'Tugas berhasil dibuat');
     }
 
     /**
@@ -73,16 +103,18 @@ class TugasSiswaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'file_result' => 'required',
+            // 'file_result' => 'required',
+            'name_student' => 'required',
+            'file' => 'required',
         ]);
-        $tugas = Tugas::find($id);
-        if ($tugas->file_result && file_exists('app/public/' . $tugas->file_result)) {
-            \Storage::delete('public/' . $tugas->file_result);
+        $submitions = Submitions::find($id);
+        if ($submitions->file && file_exists('app/public/' . $submitions->file)) {
+            \Storage::delete('public/' . $submitions->file);
         }
 
-        $file_result_name = $request->file('file_result')->store('fileSiswa', 'public');
-        $tugas->file_result = $file_result_name;
-        $tugas->save();
+        $file_name = $request->file('file')->store('fileSiswa', 'public');
+        $submitions->file = $file_name;
+        $submitions->save();
 
         return redirect()->route('tugas-siswas.index')
             ->with('success', 'Tugas anda berhasil di upload');

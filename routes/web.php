@@ -54,6 +54,7 @@ Route::group(['middleware' => 'guru'], function () {
     Route::resource('guru', GuruController::class);
 });
 Route::group(['middleware' => 'siswa'], function () {
+    Route::get('/create-assigment/{id}', [TugasSiswaController::class, 'createAssigment'])->name('createAssigment');
     Route::resource('tugas-siswas', SiswaController::class);
     Route::resource('tugas-siswa', TugasSiswaController::class);
 });

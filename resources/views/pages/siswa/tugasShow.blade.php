@@ -59,7 +59,7 @@
                                 </i>
                                 See
                             </a>
-                            <a class="btn btn-info btn-sm"  href="{{route('tugas-siswa.edit', $tgs->id)}}" >
+                            <a class="btn btn-info btn-sm"  href="{{route('createAssigment', $tgs->id)}}" >
                                 <i class="fas fa-book"></i>
                                 Send Assigment
                             </a>

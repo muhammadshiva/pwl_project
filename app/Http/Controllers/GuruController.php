@@ -107,7 +107,8 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tugas = Tugas::find($id);
+        return view('pages.guru.tugas-edit', compact('tugas'));
     }
 
     /**
@@ -119,7 +120,28 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'deskripsi' => 'required',
+            'tanggal' => 'required',
+            'duedate' => 'required',
+            'file' => 'required',
+        ]);
+
+        $tugas = Tugas::find($id);
+        if ($tugas->file && file_exists('app/public/' . $tugas->file)) {
+            \Storage::delete(['public/', $tugas->file]);
+        }
+
+        $tugas->deskripsi = $request->get('deskripsi');
+        $tugas->tanggal = $request->get('tanggal');
+        $tugas->duedate = $request->get('duedate');
+        $filename = $request->file('file')->store('files', 'public');
+        $tugas->file = $filename;
+        $tugas->id_mapel = $request->id_mapel;
+        $tugas->save();
+
+        return redirect()->route('guru.index')
+            ->with('success', 'Tugas berhasil diupdate');
     }
 
     /**

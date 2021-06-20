@@ -67,7 +67,7 @@ class GuruController extends Controller
         $tugas->id_mapel = $request->id_mapel;
         $tugas->save();
 
-        return redirect()->route('guru.index')
+        return redirect()->back()
             ->with('success', 'Tugas berhasil dibuat');
     }
 
@@ -140,7 +140,7 @@ class GuruController extends Controller
         $tugas->id_mapel = $request->id_mapel;
         $tugas->save();
 
-        return redirect()->route('guru.index')
+        return redirect()->back()
             ->with('success', 'Tugas berhasil diupdate');
     }
 

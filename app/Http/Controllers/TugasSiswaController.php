@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Mapel;
 use App\Models\Submitions;
 use App\Models\Tugas;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class TugasSiswaController extends Controller

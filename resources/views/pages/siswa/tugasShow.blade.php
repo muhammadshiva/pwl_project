@@ -21,7 +21,6 @@
                         <th>Judul</th>
                         <th>Last Modified</th>
                         <th>Due Date</th>
-                        <th>Submission Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -42,16 +41,6 @@
                             <a>
                                 {{$tgs->duedate}}
                             </a>
-                        </td>
-                        <td>
-                            @if ($tgs->file_result == null)
-                                <span class="badge badge-warning text-bold text-white" style="padding: 10px;">No attempt</span>
-                            @else
-                                <span class="badge badge-primary font-weight-bold" style="padding: 10px;">Submitted for grading</span>
-                            @endif
-
-
-                            {{-- <button class="btn btn-primary">Belum</button> --}}
                         </td>
                         <td class="project-actions flex-wrap">
                             <a class="btn btn-primary btn-sm" href="{{route('tugas-siswa.show', $tgs->id)}}" >

@@ -27,31 +27,6 @@
         </ul>
     </div>
     @endif
-    {{-- <form method="post" action="{{ route('tugas-siswa.update', $tugas->id) }}" id="myForm" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-            <div class="form-group">
-                <label for="file_result">Upload Tugas Anda</label>
-                <input type="file" class="form-control" required="required" name="file_result">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    </div>
-    </div>
-    </div>
-    <div class="d-flex">
-    <h3 class="text-bold">Jawaban:</h3>
-    @if ($tugas->file_result != null)
-        <div class="pl-1" style="position: relative; overflow: hidden; width: 100%;">
-            <iframe src="{{asset('storage/'.$tugas->file_result)}}" width="100%" height="900" style="border: none" ></iframe>
-        </div>
-    @else
-
-    <span class="text-danger font-weight-bold mt-1 pl-1"> *Sepertinya Anda masih belum mengumpulkan tugas</span>
-
-    @endif
-    </div> --}}
-
     <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">{{$tugas->deskripsi}}</h3>

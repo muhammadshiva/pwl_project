@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tugas;
 use App\Models\Mapel;
+use App\Models\Submitions;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -53,7 +54,11 @@ class SiswaController extends Controller
             ->orderBy('id_mapel', 'asc')
             ->get();
         $tugasMapel = Mapel::find($id);
-        return view('pages.siswa.tugasShow', compact('tugas', 'tugasMapel'));
+        $submitions = Submitions::where('id_assigment', $id)
+            ->orderBy('id_assigment', 'asc')
+            ->get();
+        return view('pages.siswa.tugasShow', compact('tugas', 'tugasMapel', 'submitions'));
+        // dd($submition);
     }
 
     /**
